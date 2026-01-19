@@ -19,7 +19,7 @@ spec:
 
   # Container 2: The "Sidecar" (Simulates a log processor)
   - name: sidecar-container
-    image: busyboxs
+    image: busybox
     command: ["sh", "-c", "tail -f /var/log/app.log"]
     volumeMounts:
     - name: log-storage
