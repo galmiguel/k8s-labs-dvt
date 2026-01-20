@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-demo-pod
+  labels:
+    app: init-demo
+spec:
+  containers:
+  - name: main-app
+    image: busybox
+    command: ['sh', '-c', 'echo "The app is running!" && sleep 3600']
+
+  # This runs BEFORE the main-app
+  initContainers:
+  - name: wait-for-service
+    image: busybox
+    command: ['sh', '-c', "until nslookup myservice.default.svc.cluster.local; do echo waiting; sleep 2; done"]
