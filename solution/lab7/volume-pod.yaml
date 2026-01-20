@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volume-demo-pod
+spec:
+  volumes:
+    - name: config-vol
+      configMap:
+        name: web-config
+  containers:
+  - name: busybox-container
+    image: busybox
+    command: ["sh", "-c", "ls /etc/config && sleep 3600"]
+    volumeMounts:
+      - name: config-vol
+        mountPath: /etc/config
+        readOnly: true

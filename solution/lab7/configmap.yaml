@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-config
+data:
+  MAX_CONNECTIONS: "300"
+  THEME: "dark"
