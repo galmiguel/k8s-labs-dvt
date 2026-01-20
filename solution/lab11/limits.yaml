@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: limits
+  labels:
+    name: limits
+spec:
+  containers:
+  - name: limits-container
+    image: paulbouwer/hello-kubernetes:1.10
+    ports:
+      - containerPort: 8080
+    resources:
+      requests:
+        cpu: '200m'
+        memory: '150Mi'
+      limits:
+        cpu: '500m'
+        memory: '250Mi'

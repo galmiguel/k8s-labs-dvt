@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: limits-service
+spec:
+  type: ClusterIP
+  selector:
+    name: limits
+  ports:
+  - port: 80
+    targetPort: 8080
