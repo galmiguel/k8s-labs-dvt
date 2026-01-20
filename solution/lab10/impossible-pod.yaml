@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: impossible-pod
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    command: ["sh", "-c", "echo 'Im blue ba da bee'; sleep 3600"]
+  nodeSelector:
+    color: blue
