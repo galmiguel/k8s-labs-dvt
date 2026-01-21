@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: scaler-service
+spec:
+  type: ClusterIP
+  selector:
+    app: scaler-challenge
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scaler-challenge
+spec:
+  selector:
+    matchLabels:
+      app: scaler-challenge
+  template:
+    metadata:
+      labels:
+        app: scaler-challenge
+    spec:
+      containers:
+      - name: scaler-challenge
+        image: registry.k8s.io/hpa-example
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            cpu: "500m"
+        ports:
+        - containerPort: 80
