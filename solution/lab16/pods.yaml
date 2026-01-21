@@ -1,0 +1,25 @@
+# The Trusted Client
+apiVersion: v1
+kind: Pod
+metadata:
+  name: trusted-frontend
+  labels:
+    role: frontend
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    command: ["sh", "-c", "sleep 3600"]
+---
+# The Untrusted Client
+apiVersion: v1
+kind: Pod
+metadata:
+  name: untrusted-pod
+  labels:
+    role: unknown
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    command: ["sh", "-c", "sleep 3600"]
